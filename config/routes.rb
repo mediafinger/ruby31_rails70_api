@@ -1,6 +1,9 @@
+# Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :clients, only: %i(create show)
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: proc { [200, {}, [""]] }
+
+  # catch all unknown routes to NOT throw a FATAL ActionController::RoutingError
+  match "*path", to: "application#error_404", via: :all
 end

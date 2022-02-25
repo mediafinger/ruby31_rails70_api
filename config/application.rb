@@ -35,5 +35,23 @@ module Api
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Middleware configuration:
+
+    # Rack::RequestID ensures that every request has HTTP_X_REQUEST_ID set
+    # It needs to reside in the callchain before ActionDispatch::RequestId
+    # ActionDispatch::RequestId creates a request_id or uses HTTP_X_REQUEST_ID
+    # but it will not change the request header (only sets the response header)
+    config.middleware.insert_before(
+      ActionDispatch::RequestId,
+      ::Rack::RequestID, include_response_header: true, overwrite: false
+    )
+
+    # # set rack-timeout / test in production to not set it to low
+    config.middleware.insert_after(
+      ActionDispatch::RequestId,
+      Rack::Timeout, service_timeout: 6 # seconds
+    )
+    Rack::Timeout::Logger.disable # we only log the errors, not the verbose status messages
   end
 end

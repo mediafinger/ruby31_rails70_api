@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   def create
     client = Client.new(create_params)
+    client.preferences = { unconfirmed_email: client.email }
 
     if client.save
       render status: :created, json: client.attributes.slice("name", "email", "id")

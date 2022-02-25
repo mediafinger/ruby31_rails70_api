@@ -5,6 +5,7 @@ class CreateClients < ActiveRecord::Migration[7.0]
       t.string :email, null: false
       t.string :password_digest, null: false
       t.string :temp_auth_token # for email confirmation or password reset, roll your own expiration logic
+      t.jsonb :preferences, null: false, default: {}
 
       t.timestamps
 

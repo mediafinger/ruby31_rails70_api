@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_24_200316) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "temp_auth_token"
+    t.jsonb "preferences", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_clients_on_email", unique: true

@@ -26,6 +26,7 @@ group :development, :test do
   gem "amazing_print", "~> 1.4"
   gem "bundler-audit", "~> 0.9"
   gem "factory_bot_rails", "~> 6.2"
+  gem "faker", "~> 2.19"
   gem "rspec-rails", "~> 5.1"
   gem "rswag-specs", "~> 2.5"
 end

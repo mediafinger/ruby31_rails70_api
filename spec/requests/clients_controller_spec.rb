@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe ClientsController, type: :request do
   describe "GET /clients" do
-    let(:client) { Client.create!(email: "andy@example.com", name: "andy", password: "foobar1234") }
+    let(:client) { FactoryBot.create(:client, email: "andy@example.com", name: "andy") }
 
     it "returns the JSON representation of a client" do
       get client_path(client.id)

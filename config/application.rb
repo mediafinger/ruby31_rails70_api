@@ -18,6 +18,10 @@ require "action_view/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require "rack/requestid"
+
+require_relative File.expand_path("../app/errors/errors_middleware", __dir__)
+
 module Api
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -53,5 +57,11 @@ module Api
       Rack::Timeout, service_timeout: 6 # seconds
     )
     Rack::Timeout::Logger.disable # we only log the errors, not the verbose status messages
+
+    # handle all thrown exceptions with proper logging and responding with JSON
+    config.middleware.insert_after(
+      ActionDispatch::RequestId,
+      ::ErrorsMiddleware
+    )
   end
 end

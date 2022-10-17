@@ -6,7 +6,7 @@ ruby "3.1.2"
 gem "rails", "~> 7.0.4"
 
 gem "bcrypt", "~> 3.1"
-gem "dry-validation", "~> 1.8"
+gem "dry-validation", "~> 1.9"
 gem "jsonapi.rb", "~> 2.0" # includes jsonapi-serializer
 gem "oj", "~> 3.13"
 gem "pg", "~> 1.1"

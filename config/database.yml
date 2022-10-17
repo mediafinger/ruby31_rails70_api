@@ -14,16 +14,23 @@
 # Configure Using Gemfile
 # gem "pg"
 #
+# For details on connection pooling, see Rails configuration guide
+# https://guides.rubyonrails.org/configuring.html#database-pooling
+#
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  reconnect: true
+  timeout: 5000
+  host: <%= ENV.fetch("API_APP_DB_HOST") { "localhost" }  %>
+  password: <%= ENV.fetch("API_APP_DB_PASSWORD") { "" }  %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: <%= ENV.fetch("API_APP_DB_PORT") { 5432 } %>
+  username: <%=ENV.fetch("API_APP_DB_USER") { "postgres" }  %>
 
 development:
   <<: *default
-  database: api_development
+  database: <%= ENV.fetch("API_APP_DB_NAME") { "api_development" }  %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +64,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: api_test
+  database: <%= ENV.fetch("API_APP_DB_NAME") { "api_test" }  %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +88,4 @@ test:
 #
 production:
   <<: *default
-  database: api_production
-  username: api
-  password: <%= ENV["API_DATABASE_PASSWORD"] %>
+  database: <%= ENV.fetch("API_APP_DB_NAME") { "api_production" }  %>

@@ -117,7 +117,7 @@ class ErrorsMiddleware
     end
 
     def clean_backtrace(error)
-      return error.backtrace if ENV["FULL_BACKTRACE"]
+      return error.backtrace if AppConf.is?(:full_backtrace, true)
 
       cleaner = ActiveSupport::BacktraceCleaner.new
       cleaner.add_filter   { |line| line.gsub(Rails.root.to_s, '') } # strip the Rails.root prefix

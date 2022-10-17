@@ -1,5 +1,8 @@
 require_relative "boot"
 
+# Read ENV variables and make AppConf settings available
+require_relative "app_conf"
+
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -54,7 +57,7 @@ module Api
     # # set rack-timeout / test in production to not set it to low
     config.middleware.insert_after(
       ActionDispatch::RequestId,
-      Rack::Timeout, service_timeout: 6 # seconds
+      Rack::Timeout, service_timeout: AppConf.rack_timeout # seconds
     )
     Rack::Timeout::Logger.disable # we only log the errors, not the verbose status messages
 

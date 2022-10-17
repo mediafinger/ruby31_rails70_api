@@ -38,7 +38,7 @@ jobs:
       API_APP_DB_NAME: api_test
       API_APP_DB_PASSWORD: ci_db_user_password
       API_APP_DB_PORT: 5432
-      API_APP_DB_USER: postgres-ci
+      API_APP_DB_USERNAME: postgres-ci
 
     services:
       postgres:

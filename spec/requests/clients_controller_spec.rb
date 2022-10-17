@@ -10,9 +10,15 @@ RSpec.describe ClientsController, type: :request do
       expect(response).to have_http_status(200)
       expect(parsed_response).to eq(
         {
-          "email" => "andy@example.com",
-          "id"    => client.id,
-          "name"  => "andy"
+          "data" => {
+            "attributes" => {
+              "email" => "andy@example.com",
+              "id" => client.id,
+              "name" => "andy"
+            },
+            "id" => client.id,
+            "type" => "client",
+          },
         }
       )
     end
@@ -27,9 +33,15 @@ RSpec.describe ClientsController, type: :request do
       expect(response).to have_http_status(201)
       expect(parsed_response).to eq(
         {
-          "email" => "andy@example.com",
-          "id"    => Client.last.id,
-          "name"  => "andy"
+          "data" => {
+            "attributes" => {
+              "email" => "andy@example.com",
+              "id" => Client.last.id,
+              "name" => "andy"
+            },
+            "id" => Client.last.id,
+            "type" => "client",
+          },
         }
       )
     end

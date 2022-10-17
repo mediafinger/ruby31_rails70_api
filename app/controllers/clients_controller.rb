@@ -4,16 +4,16 @@ class ClientsController < ApplicationController
     client.preferences = { unconfirmed_email: client.email }
 
     if client.save
-      render status: :created, json: client.attributes.slice("name", "email", "id")
+      render status: :created, jsonapi: client
     else
-      render status: :unprocessable_entity, json: client.errors
+      render status: :unprocessable_entity, jsonapi_errors: client.errors
     end
   end
 
   def show
     client = Client.find_by!(show_params)
 
-    render status: :ok, json: client.attributes.slice("name", "email", "id")
+    render status: :ok, jsonapi: client
   end
 
   private

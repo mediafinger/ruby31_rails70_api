@@ -7,7 +7,7 @@ gem "rails", "~> 7.0.4"
 
 gem "bcrypt", "~> 3.1"
 gem "dry-validation", "~> 1.8"
-gem "jsonapi-serializer", "~> 2.2"
+gem "jsonapi.rb", "~> 2.0" # includes jsonapi-serializer
 gem "oj", "~> 3.13"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"

@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+require "jsonapi"
+
+# Follow the JSON:API schema by default
+# https://github.com/stas/jsonapi.rb
+# uses the jsonapi_serializer gem under the hood
+#
+JSONAPI::Rails.install!
+
 # OJ is a fast JSON parsing gem
 # it is automagically used by jsonapi_serializer, a fast JSON serializer
 #

@@ -24,4 +24,11 @@ class ApplicationController < ActionController::API
   def data_params
     params.require(:data).to_unsafe_h # contains :type and attributes: {...}
   end
+
+  # throwing the error here, after catching it in our routes,
+  # means our normal error handler process will be used
+  # to log the error and display a message to the user
+  def error_404
+    raise ActionController::RoutingError.new("Path #{request.path} could not be found")
+  end
 end

@@ -102,7 +102,7 @@ class ErrorsMiddleware
 
       log_entry = [
         klass,
-        "message=\"#{error.message.to_s.encode('UTF-8')}\"",
+        "message='#{error.message.to_s.encode('UTF-8')}'",
         "code=#{error.code}",
         "status=#{error.status}",
         "id=#{error.id}",

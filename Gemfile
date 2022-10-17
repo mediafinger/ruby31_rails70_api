@@ -13,6 +13,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "rack-requestid", "~> 0.2"
 gem "rack-timeout", "~> 0.6", require: "rack/timeout/base" # set a custom timeout in the middleware
+gem "ransack", "~> 3.2"
 gem "rswag-api", "~> 2.5"
 gem "rswag-ui", "~> 2.5"
 

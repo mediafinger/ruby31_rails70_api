@@ -19,7 +19,7 @@ class ClientsController < ApplicationController
   private
 
   def create_params
-    validate_params!(ClientCreateContract.new, params)
+    validate_params_for!(ClientCreateContract.new, :client)
   end
 
   def show_params

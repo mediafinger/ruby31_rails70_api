@@ -21,7 +21,7 @@ Ruby 3.1 with Rails 7.0 API-only app as an example of how I like my Ruby on Rail
   * Rails
   * gems
   * all the others
-* dry-validation
+* Dry-validation
 * Error middleware
   * 404 handling
 * GitHub Actions CI
@@ -40,7 +40,7 @@ Ruby 3.1 with Rails 7.0 API-only app as an example of how I like my Ruby on Rail
   * strong_migrations _(not implemented yet)_
   * UUIDs
 * Rack timeouts
-* rubocop _(not implemented yet)_
+* Rubocop _(not implemented yet)_
 * README
 * RSpec
   * Unit specs
@@ -48,10 +48,12 @@ Ruby 3.1 with Rails 7.0 API-only app as an example of how I like my Ruby on Rail
   * Factories
 * Service pattern for business logic _(not implemented yet)_
 * Swagger / OpenAPI docs _(not implemented yet)_
-* task `rake ci`
+* Task `rake ci`
   * FactoryBot and Rubocop linting
   * Running the specs
   * Auditing the bundle
+* Versioning API by timestamps _(not implemented yet)_
+  * https://stripe.com/blog/api-versioning
 
 ### AppConf
 
